@@ -229,6 +229,150 @@
             color: #ffffff;
         }
 
+        /* =========================
+   SIGNATURE TECH EFFECT
+========================= */
+
+        .logo-text {
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        /* moving light scan */
+        .logo-text::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 60%;
+            height: 100%;
+
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.18),
+                    transparent);
+
+            transform: skewX(-25deg);
+
+            animation: logoScan 5s ease-in-out infinite;
+        }
+
+        /* signature underline */
+        .logo-text::after {
+
+            content: '';
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 100%;
+            height: 2px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(90deg,
+                    transparent,
+                    #00DBDE,
+                    rgba(106, 17, 203, 0.9),
+                    transparent);
+
+            filter: blur(1px);
+
+            opacity: 0.75;
+
+            animation: signatureFlow 4s linear infinite;
+        }
+
+        /* SAIF floating motion */
+        .logo-text .saif {
+
+            display: inline-block;
+
+            animation: saifFloat 3.5s ease-in-out infinite;
+        }
+
+        /* glowing dot */
+        .logo-text .dot {
+
+            animation:
+                floatingDot 2.5s infinite ease-in-out,
+                dotPulse 2s infinite;
+        }
+
+        @keyframes logoScan {
+
+            0% {
+                left: -120%;
+            }
+
+            100% {
+                left: 160%;
+            }
+        }
+
+        @keyframes signatureFlow {
+
+            0% {
+
+                transform: translateX(-10px) scaleX(0.95);
+
+            }
+
+            50% {
+
+                transform: translateX(10px) scaleX(1.05);
+
+            }
+
+            100% {
+
+                transform: translateX(-10px) scaleX(0.95);
+
+            }
+        }
+
+        @keyframes saifFloat {
+
+            0%,
+            100% {
+
+                transform: translateY(0px);
+
+            }
+
+            50% {
+
+                transform: translateY(-2px);
+
+            }
+        }
+
+        @keyframes dotPulse {
+
+            0%,
+            100% {
+
+                text-shadow:
+                    0 0 8px #00DBDE,
+                    0 0 20px #00DBDE;
+            }
+
+            50% {
+
+                text-shadow:
+                    0 0 18px #00DBDE,
+                    0 0 40px #00DBDE;
+            }
+        }
+
         @keyframes floatingDot {
 
             0%,

@@ -76,7 +76,7 @@ async function sha256(message) {
 
         const MY_PHOTO = "10001142789.png";
         const img = new Image();
-        img.src = "/static/assets/images/10001142789.png";
+        img.src = "static/assets/images/10001142789.png";
 
         img.onload = function () {
             const offCanvas = document.createElement('canvas');

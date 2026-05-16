@@ -1,0 +1,8 @@
+# private/
+
+config.js
+
+# *.pdf
+# __pycache__/
+# *.pyc
+# .env

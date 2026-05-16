@@ -673,3 +673,215 @@
                 gap: 15px;
             }
         }
+
+        /* =========================
+   MOBILE GLASS NAVBAR
+========================= */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 14px 10px;
+                align-items: center;
+                justify-content: center;
+                gap: 18px;
+            }
+
+            .nav-links {
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 12px;
+
+                padding: 10px 5px 14px 5px;
+
+                justify-content: flex-start;
+                scroll-behavior: smooth;
+
+                scrollbar-width: none;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-links li {
+                list-style: none;
+                flex: 0 0 auto;
+            }
+
+            .nav-links a {
+
+                position: relative;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 12px 18px;
+
+                border-radius: 18px;
+
+                background: rgba(255, 255, 255, 0.06);
+
+                backdrop-filter: blur(14px);
+
+                border: 1px solid rgba(255, 255, 255, 0.08);
+
+                color: #ffffff;
+
+                font-size: 0.82rem;
+                font-weight: 600;
+                letter-spacing: 1px;
+
+                white-space: nowrap;
+
+                overflow: hidden;
+
+                transition: 0.4s ease;
+
+                box-shadow:
+                    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+                    0 4px 20px rgba(0, 0, 0, 0.25);
+            }
+
+            /* Glow Border */
+            .nav-links a::before {
+
+                content: "";
+
+                position: absolute;
+                inset: -1px;
+
+                border-radius: inherit;
+
+                padding: 1px;
+
+                background:
+                    linear-gradient(130deg,
+                        rgba(0, 219, 222, 0.9),
+                        rgba(106, 17, 203, 0.9),
+                        rgba(0, 219, 222, 0.9));
+
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+
+                mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+
+                animation: borderFlow 4s linear infinite;
+
+                opacity: 0.9;
+            }
+
+            /* Liquid Light Effect */
+            .nav-links a::after {
+
+                content: "";
+
+                position: absolute;
+
+                width: 45px;
+                height: 180%;
+
+                background: rgba(255, 255, 255, 0.18);
+
+                top: -40%;
+                left: -60px;
+
+                transform: rotate(25deg);
+
+                transition: 0.7s ease;
+            }
+
+            .nav-links a:hover::after,
+            .nav-links a:active::after {
+
+                left: 140%;
+            }
+
+            .nav-links a:hover,
+            .nav-links a:active {
+
+                transform: translateY(-3px) scale(1.03);
+
+                color: #00DBDE;
+
+                box-shadow:
+                    0 0 18px rgba(0, 219, 222, 0.35),
+                    0 0 30px rgba(106, 17, 203, 0.25);
+            }
+
+            @keyframes borderFlow {
+
+                0% {
+                    filter: hue-rotate(0deg);
+                }
+
+                100% {
+                    filter: hue-rotate(360deg);
+                }
+            }
+
+            /* PROJECT SECTION FIX */
+            .projects-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+            }
+
+            .project-card {
+
+                width: 100%;
+
+                padding: 22px;
+            }
+
+        }
+
+        /* =========================
+   LIQUID TOUCH EFFECT
+========================= */
+
+        .liquid-ripple {
+
+            position: absolute;
+
+            width: 12px;
+            height: 12px;
+
+            background: rgba(255, 255, 255, 0.45);
+
+            border-radius: 50%;
+
+            transform: translate(-50%, -50%);
+
+            pointer-events: none;
+
+            animation: liquidRipple 0.8s ease-out forwards;
+        }
+
+        @keyframes liquidRipple {
+
+            0% {
+
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform: translate(-50%, -50%) scale(14);
+
+            }
+        }

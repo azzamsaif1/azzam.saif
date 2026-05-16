@@ -389,3 +389,63 @@ if (searchInputCert) {
         if (noResultsCert) noResultsCert.style.display = visible === 0 ? 'block' : 'none';
     });
 }
+// ===== MOBILE NAV AUTO CENTER =====
+
+const navContainer = document.querySelector('.nav-links');
+
+if (navContainer) {
+
+    const navButtons = navContainer.querySelectorAll('a');
+
+    navButtons.forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+            if (window.innerWidth <= 768) {
+
+                btn.scrollIntoView({
+
+                    behavior: 'smooth',
+
+                    inline: 'center',
+
+                    block: 'nearest'
+
+                });
+
+            }
+
+        });
+
+    });
+
+}
+
+
+// ===== LIQUID TOUCH EFFECT =====
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+
+    link.addEventListener('touchstart', function (e) {
+
+        const ripple = document.createElement('span');
+
+        ripple.classList.add('liquid-ripple');
+
+        const rect = this.getBoundingClientRect();
+
+        ripple.style.left = (e.touches[0].clientX - rect.left) + 'px';
+
+        ripple.style.top = (e.touches[0].clientY - rect.top) + 'px';
+
+        this.appendChild(ripple);
+
+        setTimeout(() => {
+
+            ripple.remove();
+
+        }, 800);
+
+    });
+
+});

@@ -307,23 +307,6 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
 });
 
 // ===== Open Certificate Function =====
-async function deriveKeyFromPassword(password, salt) {
-    const keyMaterial = await crypto.subtle.importKey(
-        "raw",
-        new TextEncoder().encode(password),
-        { name: "PBKDF2" },
-        false,
-        ["deriveKey"]
-    );
-    return await crypto.subtle.deriveKey(
-        { name: "PBKDF2", salt: salt, iterations: 100000, hash: "SHA-256" },
-        keyMaterial,
-        { name: "AES-GCM", length: 256 },
-        false,
-        ["decrypt"]
-    );
-}
-
 function openCert(encryptedFilePath) {
     let userPassword = sessionStorage.getItem('certPassword');
 
@@ -333,25 +316,72 @@ function openCert(encryptedFilePath) {
     }
 
     const viewer = document.createElement('div');
-    viewer.style = `position:fixed; inset:0; background:rgba(0,0,0,0.95); display:flex; justify-content:center; align-items:center; z-index:9999;`;
-    viewer.innerHTML = `
-        <div style="width:85%;height:90%;position:relative;">
-            <button id="closeCertBtn" style="position:absolute; top:-45px; right:0; background:#00DBDE; border:none; padding:10px 18px; border-radius:50px; cursor:pointer; font-weight:bold;">✖ Close</button>
-            <div id="pdfLoader" style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; color:#00DBDE; gap:20px;">
-                <div class="loader"></div>
-                <span>🔐 Verifying & Decrypting...</span>
-            </div>
-            <iframe id="pdfFrame" style="width:100%;height:100%;border:none;border-radius:12px;display:none;"></iframe>
-        </div>
-    `;
+    viewer.style.position = 'fixed';
+    viewer.style.top = '0';
+    viewer.style.left = '0';
+    viewer.style.width = '100%';
+    viewer.style.height = '100%';
+    viewer.style.backgroundColor = 'rgba(0,0,0,0.95)';
+    viewer.style.display = 'flex';
+    viewer.style.justifyContent = 'center';
+    viewer.style.alignItems = 'center';
+    viewer.style.zIndex = '9999';
+
+    const container = document.createElement('div');
+    container.style.width = '85%';
+    container.style.height = '90%';
+    container.style.position = 'relative';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '✖ Close';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '-45px';
+    closeBtn.style.right = '0';
+    closeBtn.style.backgroundColor = '#00DBDE';
+    closeBtn.style.border = 'none';
+    closeBtn.style.padding = '10px 18px';
+    closeBtn.style.borderRadius = '50px';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.fontWeight = 'bold';
+    closeBtn.style.zIndex = '10';
+
+    const loaderDiv = document.createElement('div');
+    loaderDiv.id = 'pdfLoader';
+    loaderDiv.style.display = 'flex';
+    loaderDiv.style.flexDirection = 'column';
+    loaderDiv.style.justifyContent = 'center';
+    loaderDiv.style.alignItems = 'center';
+    loaderDiv.style.height = '100%';
+    loaderDiv.style.color = '#00DBDE';
+    loaderDiv.style.gap = '20px';
+    loaderDiv.innerHTML = '<div class="loader"></div><span>🔐 Verifying & Decrypting...</span>';
+
+    const pdfFrame = document.createElement('iframe');
+    pdfFrame.id = 'pdfFrame';
+    pdfFrame.style.width = '100%';
+    pdfFrame.style.height = '100%';
+    pdfFrame.style.border = 'none';
+    pdfFrame.style.borderRadius = '12px';
+    pdfFrame.style.display = 'none';
+
+    container.appendChild(closeBtn);
+    container.appendChild(loaderDiv);
+    container.appendChild(pdfFrame);
+    viewer.appendChild(container);
     document.body.appendChild(viewer);
 
-    const closeBtn = document.getElementById('closeCertBtn');
-    const pdfFrame = document.getElementById('pdfFrame');
-    const pdfLoader = document.getElementById('pdfLoader');
+    closeBtn.addEventListener('click', () => viewer.remove());
+    closeBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        viewer.remove();
+    });
 
-    closeBtn.onclick = () => viewer.remove();
-    viewer.addEventListener('click', (e) => { if (e.target === viewer) viewer.remove(); });
+    viewer.addEventListener('click', (e) => {
+        if (e.target === viewer) viewer.remove();
+    });
+    viewer.addEventListener('touchstart', (e) => {
+        if (e.target === viewer) viewer.remove();
+    });
 
     crypto.subtle.digest('SHA-256', new TextEncoder().encode(userPassword))
         .then(hash => {
@@ -375,15 +405,16 @@ function openCert(encryptedFilePath) {
 
             const blob = new Blob([decrypted], { type: "application/pdf" });
             const url = URL.createObjectURL(blob);
-            pdfLoader.style.display = 'none';
+            loaderDiv.style.display = 'none';
             pdfFrame.style.display = 'block';
             pdfFrame.src = url;
         })
         .catch((error) => {
             console.error('Error:', error);
-            pdfLoader.innerHTML = '<div style="color:#ff2d75; text-align:center;">❌ Wrong password or corrupted file!</div>';
+            loaderDiv.innerHTML = '<div style="color:#ff2d75; text-align:center;">❌ Wrong password or corrupted file!</div>';
             sessionStorage.removeItem('certPassword');
         });
+
 }
 
 // ===== Search functionality =====

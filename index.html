@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Azzam Saif | Professional Pixel Art - Digital Realm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+    <link rel="stylesheet" href="static/css/style.css">
+
+
+</head>
+
+<body>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <div class="loading-text">INITIALIZING DIGITAL REALM...</div>
+    </div>
+
+    <canvas id="canvas3d"></canvas>
+
+    <div class="content">
+        <nav>
+            <a href="#" class="logo">
+                <span class="logo-mark"></span>
+
+                <span class="logo-text">
+                    <span class="azzam">AZZAM</span>
+                    <span class="dot">.</span>
+                    <span class="saif">SAIF</span>
+                </span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#experience">EXPERIENCE</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#" id="openModalBtn">🔒 CERTIFICATES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </nav>
+
+        <section id="home">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>AZZAM <span>SAIF</span></h1>
+                        <div class="typed-text" id="typedText"></div>
+                        <p>Self-taught developer | Python & AI Enthusiast | Building the future, one line of code at a
+                            time.</p>
+                        <a href="#projects" class="btn"> EXPLORE MY WORK</a>
+                    </div>
+                    <div class="professional-image-container">
+                        <div class="profile-frame" id="profileFrame">
+                            <canvas id="pixelCanvas" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="pixel-status" id="drawStatus"></div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="counters">
+                <div class="counter-item">
+                    <div class="counter-number" id="counterProjects">0</div>
+                    <p>Projects</p>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="counterCerts">0</div>
+                    <p>Certificates</p>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="counterSkills">0</div>
+                    <p>Skills</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="education">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-grid">
+                    <div class="education-card"><i class="fas fa-graduation-cap"
+                            style="font-size: 40px; color: #00DBDE;"></i>
+                        <h3>Tariq Bin Ziyad High School, Yemen</h3>
+                        <p>Science Stream | High School Diploma • 89.75%</p>
+                        <p>Sharjah, Taiz - Yemen • 2016</p>
+                    </div>
+                    <div class="education-card"><i class="fas fa-university"
+                            style="font-size: 40px; color: #00DBDE;"></i>
+                        <h3>Al-Jazeera College of Technology, Sudan</h3>
+                        <p>Bachelor's Degree (Not completed) - Biomedical Engineering</p>
+                        <p>Khartoum – Sudan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-grid">
+                    <div class="experience-card"><i class="fas fa-chart-line"
+                            style="font-size: 30px; color: #00DBDE;"></i>
+                        <h3>ISM – Investment & Media Services</h3>
+                        <p>Khartoum, Sudan</p>
+                        <ul>
+                            <li>Administrative & accounting tasks</li>
+                            <li>Data entry & document organisation</li>
+                        </ul>
+                    </div>
+                    <div class="experience-card"><i class="fas fa-hospital"
+                            style="font-size: 30px; color: #00DBDE;"></i>
+                        <h3>General Directorate of Medical Services</h3>
+                        <p>Khartoum, Sudan</p>
+                        <ul>
+                            <li>Medical technology internship</li>
+                            <li>Technical & administrative support</li>
+                        </ul>
+                    </div>
+                    <div class="experience-card"><i class="fas fa-plane" style="font-size: 30px; color: #00DBDE;"></i>
+                        <h3>Sudan Airways Training Center</h3>
+                        <p>Khartoum, Sudan</p>
+                        <ul>
+                            <li>Amadeus reservation system training</li>
+                            <li>Booking & ticketing procedures</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card"><i class="fab fa-python skill-icon"></i>
+                        <h3>Python</h3>
+                        <p>Programming, Automation, AI</p>
+                    </div>
+                    <div class="skill-card"><i class="fas fa-code skill-icon"></i>
+                        <h3>Flask</h3>
+                        <p>Web framework, REST APIs</p>
+                    </div>
+                    <div class="skill-card"><i class="fas fa-database skill-icon"></i>
+                        <h3>Databases</h3>
+                        <p>SQLite, MySQL, CRUD</p>
+                    </div>
+                    <div class="skill-card"><i class="fas fa-network-wired skill-icon"></i>
+                        <h3>Networking</h3>
+                        <p>TCP, UDP, Sockets</p>
+                    </div>
+                    <div class="skill-card"><i class="fab fa-html5 skill-icon"></i>
+                        <h3>Web Development</h3>
+                        <p>HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="skill-card"><i class="fas fa-brain skill-icon"></i>
+                        <h3>AI & ML</h3>
+                        <p>NLP, Automation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card"><i class="fas fa-robot" style="font-size: 40px; color: #00DBDE;"></i>
+                        <h3>TechLingua Mentor AI</h3>
+                        <p>AI learning system for translation & summarization</p><a
+                            href="https://github.com/azzamsaif1/TechLingua-Mentor-ai" target="_blank"
+                            style="color: #00DBDE;">GitHub →</a>
+                    </div>
+                    <div class="project-card"><i class="fas fa-file-alt" style="font-size: 40px; color: #00DBDE;"></i>
+                        <h3>BriefHub Pro</h3>
+                        <p>Document processing with OCR & classification</p><a
+                            href="https://github.com/azzamsaif1/BriefHub-Pro" target="_blank"
+                            style="color: #00DBDE;">GitHub →</a>
+                    </div>
+                    <div class="project-card"><i class="fas fa-cubes" style="font-size: 40px; color: #00DBDE;"></i>
+                        <h3>AzzamHub</h3>
+                        <p>Productivity platform for automation & learning</p><a
+                            href="https://github.com/azzamsaif1/azzamhub" target="_blank" style="color: #00DBDE;">GitHub
+                            →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Me</h2>
+                <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; text-align: center;">
+                    <div><i class="fas fa-envelope" style="font-size: 30px; color: #00DBDE;"></i><br><a
+                            href="mailto:azzamsaif53@gmail.com" style="color: #fff;">azzamsaif53@gmail.com</a></div>
+                    <div><i class="fas fa-phone" style="font-size: 30px; color: #00DBDE;"></i><br>+44 7347 726368</div>
+                    <div><i class="fas fa-map-marker" style="font-size: 30px; color: #00DBDE;"></i><br>Elmton Road,
+                        Creswell, UK</div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://github.com/azzamsaif1" style="color: #fff; font-size: 30px; margin: 0 15px;"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/azzam-saif-8111972a0/"
+                        style="color: #fff; font-size: 30px; margin: 0 15px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/AzzamSaif262027" style="color: #fff; font-size: 30px; margin: 0 15px;"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Azzam Saif — Professional Digital Realm. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <i class="fas fa-lock" style="font-size: 50px; color: #00DBDE;"></i>
+            <h2>Secure Access</h2>
+            <p>Enter password to access certificates & experience documents</p>
+            <input type="password" id="modalPassword" placeholder="Enter password">
+            <button class="btn" id="unlockModalBtn">Unlock</button>
+            <div id="modalError" style="color: #ff2d75; margin-top: 10px;"></div>
+            <div id="documentsList" class="documents-list">
+
+                <input type="text" id="certSearch" placeholder="🔍 Search certificates..."
+                    style="width:100%; padding:14px 20px; background:rgba(255,255,255,0.08); border:1px solid rgba(0,219,222,0.3); border-radius:60px; color:white; font-size:1rem; margin-bottom:25px;">
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-height: 55vh; overflow-y: auto; padding: 5px;"
+                    id="certGrid">
+
+                    <div onclick="openCert('/static/private/Abitur.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-graduation-cap"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">High School Diploma</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Science Stream | 89.75%</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/Airways.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-plane"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Sudan Airways Training</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Amadeus System | Booking & Ticketing</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/azzamcv.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-file-alt"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Professional CV</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Work Experience & Skills</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/medical.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-hospital"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Medical Services Internship</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Medical Technology | Technical Support</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/B1zirtifikat.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-language"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">German B1 Certificate</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Language Proficiency</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/Buchhaltung.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-calculator"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Accounting Certificate</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Financial Training</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/Coursera UHXDM3VOR0NK.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fab fa-coursera"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Coursera Certificate</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Online Course | Python</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/Fußball,award.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-futbol"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Football Award</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Sports Achievement</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/Nachweise_B2.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-language"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">German B2 Certificate</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Advanced Language Proficiency</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                    <div onclick="openCert('/static/private/volunteering.pdf.enc')"
+                        style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid rgba(0,219,222,0.2); transition: all 0.3s ease; cursor: pointer;">
+                        <i class="fas fa-heart"
+                            style="font-size: 35px; color: #00DBDE; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Volunteering Certificate</h3>
+                        <p style="color: #aaa; font-size: 0.85rem;">Community Service</p>
+                        <span style="display: inline-block; margin-top: 12px; font-size: 0.75rem; color: #00DBDE;">📄
+                            Click to view →</span>
+                    </div>
+
+                </div>
+
+                <div id="noResultsMsg" style="text-align:center; padding:40px; color:#aaa; display:none;">❌ No matching
+                    certificates found</div>
+
+                <!-- <script src="{{ url_for('static', filename='js/config.js') }}"></script> -->
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+                <!-- <script src="{{ url_for('static', filename='js/main.js') }}"></script> -->
+                <script src="static/js/main.js"></script>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
